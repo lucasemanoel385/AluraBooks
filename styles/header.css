@@ -1,0 +1,198 @@
+.cabecalho__menu-hamburguer {
+    width: 30px;
+    height: 40px;
+    background-image: url("../img/Menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    /* inline-block pra permitir que consiga modificar a largura e altura */
+    display: inline-block;
+}
+
+/* ~ procura uma proxima classe que esteja escrito (no nosso caso container__rotulo) */
+/* >  procurando/entra na classe e procura algo que esteja lá dentro conforme o nome da classe escrita*/
+.container__botao:checked ~ .container__rotulo > .cabecalho__menu-hamburguer {
+    background-image: url("../img/Menu\ Aberto.svg");
+}
+
+.container__botao:checked ~.container__rotulo {
+    background: var(--azul-degrade);
+}
+
+.cabecalho {
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* position: relative libera pra você a opção de colocar outros atributos top, right etc */
+    position: relative;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem {
+    padding: 1em;
+}
+
+.lista-menu {
+    /* Display none desaparece com o elemento e não ocupa espaço */
+    display: none;
+    /* Permite que você movimente o seu elemento de acordo com o que veio antes ou o pai*/
+    /* pra absolute funcionar precisamos colocar position relative no lugar de static default no container pai/class pai */
+    position: absolute;
+    /* top 100% pra tirar do container pai graças as positions */
+    top: 100%;
+    width: 60vw;
+}
+
+/* checked detecta se está preenchido aquele checkbox */
+/* ~ é a combinação no css com o proximo elemtnos que vem a senguir (no caso a lista-menu) 
+Então se estiver checked liste o menu */
+.container__botao:checked~.lista-menu {
+    display: block;
+}
+
+.botao__header-esquerdo {
+    margin-right: 0.5em;
+}
+
+.imagem__esquerda {
+    padding: 0;
+}
+
+.lista-menu__titulo,
+.lista-menu__item {
+    padding: 0.85em;
+    background-color: var(--branco);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.lista-menu__titulo {
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link {
+    background: var(--azul-degrade);
+    /* Os webkit são pra funcionar em outros navegadores */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    /* background-clip: text faz com que a cor do background seja só
+    aplicada no texto */
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+.ultima {
+    border-radius: 0 0 10px 0;
+}
+
+.container__botao {
+    /* Tira a caixinha do checkbox das nossas vista e não ocupa espaço */
+    display: none;
+}
+
+.container__titulo {
+    display: none;
+}
+
+.opcoes {
+    display: none;
+}
+
+.container__texto {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .container__titulo, 
+    .container__titulo--negrito {
+        font-family: var(--fonte-secundario);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opcoes {
+        display: flex;
+    }
+
+    .opcoes__item {
+        padding: 0 1em;
+        text-transform: uppercase;
+    }
+
+    .opcoes__link {
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente {
+        display: none;
+    }
+
+    .cabecalho__menu-hamburguer {
+        display: none;
+    }
+
+    .opcoes__botao:checked ~ .lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao {
+        display: none;
+    }
+
+    .opcoes__botao:checked ~.opcoes__rotulo > .opcoes__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoes__item {
+        padding: 2em 1em;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover > .lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+
+
+}
+
+@media screen and (min-width: 1728px) {
+
+    .container__texto {
+        display: block;
+    }
+    
+    .container__link {
+        display: flex;
+        align-items: center;
+        margin-right: 1em;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    .opcoes {
+        margin-right: 35%;
+    }
+}
